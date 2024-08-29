@@ -16,20 +16,9 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
+import backoffice.LoginKeyword
 
-WebUI.openBrowser('')
-
-WebUI.navigateToUrl('https://dev.enigmacamp.com/apps/portal/backoffice/#/auth/login')
-
-WebUI.maximizeWindow()
-
-WebUI.verifyElementVisible(findTestObject('LoginPage/FieldUsername'))
-
-WebUI.setText(findTestObject('LoginPage/FieldUsername'), 'admin_portal')
-
-WebUI.verifyElementVisible(findTestObject('LoginPage/FieldPassword'))
-
-WebUI.setEncryptedText(findTestObject('LoginPage/FieldPassword'), '4nvbrPglk7k=')
+LoginKeyword.login('admin_portal', '4nvbrPglk7k=')
 
 WebUI.verifyElementVisible(findTestObject('LoginPage/ErrorMessagePasswordInvalidLength'), FailureHandling.STOP_ON_FAILURE)
 
