@@ -22,14 +22,13 @@ jobs:
           distribution: 'temurin'
           java-version: '11'
       
-      - name: Download Katalon Studio
-        run: wget https://github.com/katalon-studio/katalon-studio/releases/download/v8.2.0/Katalon_Studio_Linux_64-8.2.0.tar.gz -O katalon.tar.gz
-
-      - name: Extract Katalon Studio
-        run: tar -xzf katalon.tar.gz
-      
+      - name: Set up Katalon Studio
+        run: |
+          wget https://github.com/katalon-studio/katalon-studio/releases/download/v8.5.3/Katalon_Studio_Linux_64-8.5.3.tar.gz
+          tar -xzf Katalon_Studio_Linux_64-8.5.3.tar.gz
+         
       - name: Run Katalon Test Suite
-        run: ./katalon-studio/katalon -noSplash -runMode=console -projectPath=$(pwd)/backoffice-enigmacamp-automation.prj -retry=0 -testSuitePath="Test Suites/RegressionTests" -executionProfile="default" -browserType="Chrome" -reportFolder="Reports"
+        run: ./Katalon_Studio_Linux_64-8.5.3/katalonc -noSplash -runMode=console -projectPath=$(pwd)/backoffice-enigmacamp-automation.prj -retry=0 -testSuitePath="Test Suites/RegressionTests" -executionProfile="default" -browserType="Chrome" -reportFolder="Reports"
       
       - name: Upload Test Report
         uses: actions/upload-artifact@v2
