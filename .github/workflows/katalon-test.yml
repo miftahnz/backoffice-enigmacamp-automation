@@ -29,10 +29,9 @@ jobs:
       
       - name: Run Katalon Test Suite
         run: ./katalon-studio/katalon -noSplash -runMode=console -projectPath=$(pwd)/YourProject.prj -retry=0 -testSuitePath="Test Suites/YourTestSuite" -executionProfile="default" -browserType="Chrome" -reportFolder="Reports"
-
-      - name: Deploy Report to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      
+      - name: Upload Test Report
+        uses: actions/upload-artifact@v2
         with:
-          github_token: ${{ secrets.KATALON_TOKEN }}
-          publish_dir: ./Reports
-          distribution: 'gh-pages'
+          name: katalon-report
+          path: Reports/**
