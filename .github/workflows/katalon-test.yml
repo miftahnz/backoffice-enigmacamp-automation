@@ -35,3 +35,4 @@ jobs:
         with:
           github_token: ${{ secrets.KATALON_TOKEN }}
           publish_dir: ./Reports
+          distribution: 'gh-pages'
