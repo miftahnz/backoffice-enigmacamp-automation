@@ -29,7 +29,7 @@ jobs:
         run: tar -xzf katalon.tar.gz
       
       - name: Run Katalon Test Suite
-        run: ./katalon-studio/katalon -noSplash -runMode=console -projectPath=$(pwd)/YourProject.prj -retry=0 -testSuitePath="Test Suites/YourTestSuite" -executionProfile="default" -browserType="Chrome" -reportFolder="Reports"
+        run: ./katalon-studio/katalon -noSplash -runMode=console -projectPath=$(pwd)/backoffice-enigmacamp-automation.prj -retry=0 -testSuitePath="Test Suites/RegressionTests" -executionProfile="default" -browserType="Chrome" -reportFolder="Reports"
       
       - name: Upload Test Report
         uses: actions/upload-artifact@v2
